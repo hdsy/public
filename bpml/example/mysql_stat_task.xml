@@ -1,0 +1,5 @@
+<my-soft::invoke type="httpcall" service="xdb_mysql_common" filepath="/home/release/SOFT/UGW/cnf/template/bpml/httpcall/xdb_httpcall.xml" retvar="response" >
+	<my-soft::parameter name="method" 	type="var" 	value="xdb_stat_grade_yesterday"/>   
+</my-soft::invoke>
+
+<my-soft::echo type="var" value="$response"  />

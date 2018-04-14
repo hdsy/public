@@ -1,0 +1,8 @@
+<my-soft::echo type="expr" value="VcdImg.Check(TKNM1,1376498528C35FC1FE4A3CD2D4590BEEA3CD2B8766)" />
+
+<my-soft::echo type="expr" value="%0a%0d" />
+
+<my-soft::echo type="expr" value="VcdImg.Check(TKNM,1376498528C35FC1FE4A3CD2D4590BEEA3CD2B8766)" />
+<!--
+<my-soft::echo type="expr" value="Sys.GetHelp()" />
+-->

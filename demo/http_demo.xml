@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="gb2312"?>
+
+<services>
+<!--
+service 节点说明
+	id - 唯一标记一个服务，程序文件名和服务id来索引服务的配置
+	name - 服务的简短说明
+	desc - 服务的详细介绍，备忘
+-->
+	<service id="LOGIN_HTTP" name="JUST TEST" desc="登陆海南电子客票系统时，需要录入图片验证码">
+	<!--
+		porttype 节点说明
+		name - 指定协议名
+		version - 指定协议版本
+		method - 指定客户端调用方式
+		host - 指定服务所在机器地址，可以为ip或者域名
+		port - 指定端口
+		url - 指定目的URL
+	-->
+		<porttype name="HTTP" version="1.1" method="GET" host="sme.tenpay.com" port="8080" url="/test.html" >
+		<!--
+			none  普通TCP/IP协议
+			serv	客户端单向验证服务端身份，服务端不验证客户
+			clnt	服务端单项验证客户端端身份,客户端不验证服务
+			both	客户端与服务端双向验证    		
+		-->
+			<protocol ssl="none" /> 
+			<certs>
+			<!--
+					name 指定证书类型
+						 private - 客户端整数
+						 trust - 指定信任的根证书
+					path 指定证书的路径
+					passwd 指定证书的口令
+			-->
+				<cert name="private" path="" passwd="" />
+				<cert name="trust" path="" />
+			</certs>
+		</porttype>
+		
+		<headers>
+			<header name="Accept"           type="fix" 	value="image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/x-shockwave-flash, application/x-silverlight, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, application/x-ms-application, application/x-ms-xbap, application/vnd.ms-xpsdocument, application/xaml+xml, */*" />
+			<header name="Accept-Language" 	type="fix" 	value="zh-cn" />
+			<header name="UA-CPU" 			type="fix" 	value="x86" />
+			<header name="Accept-Encoding" 	type="fix" 	value="gzip, deflate" />
+			<header name="User-Agent" 		type="fix" 	value="Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; QQDownload 1.7; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.648; .NET CLR 3.5.21022)" />
+			<header name="Connection" 		type="fix" 	value="Close" />
+			<header name="Host" 			type="fix" 	value="sme.tenpay.com" />
+		</headers>
+
+		<parameters> 	    
+			<parameter name="x" 	type="fix" 	value="21"/>   
+			<parameter name="y" 	type="fix" 	value="11"/>    
+			
+			<parameter name="userid" 	type="inp" 	value=""/>  
+			<parameter name="password" 	type="inp" 	value="test.hu"/>    
+			<parameter name="checkcode" 	type="inp" 	value="8696"/>  
+		</parameters>
+
+		<response>
+		<!--
+			暂无使用
+		-->
+		</response>
+	</service>
+<services>  

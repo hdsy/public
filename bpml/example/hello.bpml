@@ -1,0 +1,29 @@
+
+<!--
+<my-soft::echo type="expr" value="Sys.GetHelp()" />
+<my-soft::echo type="expr" value="VcdImg.Check(MHAI,13765073740FF31AF467AD0B47F0BDFDC7133783F7)" />
+-->
+
+<my-soft::echo type="var" value="%0d%0a" />
+sha1:13342509591492748816wapuboy20170421 =>
+<my-soft::echo type="expr" value="Math.Sha1(13342509591492748816wapuboy20170421)" />
+
+<my-soft::echo type="var" value="%0d%0a" />
+md5 13342509591492748816wapuboy20170421 =>
+<my-soft::echo type="expr" value="Math.Md5(13342509591492748816wapuboy20170421)" />
+
+<my-soft::echo type="var" value="%0d%0a" />
+input data is :
+<my-soft::echo type="var" value="%0d%0a" />
+raw data :
+<my-soft::echo type="var" value="%0d%0a" />
+<my-soft::echo type="var" value="$_RAW_REQUEST_STRING"  />
+
+<my-soft::echo type="var" value="%0d%0a" />
+a:
+<my-soft::echo type="var" value="$a"  />
+<my-soft::echo type="var" value="%0d%0a" />
+b:
+<my-soft::echo type="var" value="$b"  />
+
+

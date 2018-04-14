@@ -1,0 +1,68 @@
+
+<!--
+signature=8f011359bcbfae61fc864916c0e0dc3132021897&timestamp=1492759086&nonce=288128685&openid=oO5mowH2-fGgObOCVhbCEz_BeWb4
+echostr=7544468854726968607&nonce=1334250959&timestamp=1492748816&signature=1fcd179ec6b10c23c7ff701275968f59e7a23619
+<my-soft::echo type="expr" value="Sys.GetHelp()" />
+<my-soft::echo type="expr" value="VcdImg.Check(MHAI,13765073740FF31AF467AD0B47F0BDFDC7133783F7)" />
+-->
+<!--
+<my-soft::echo type="var" value="%0d%0a" />
+sha1:288128685oO5mowH2-fGgObOCVhbCEz_BeWb41492759086wapuboy20170421=>
+<my-soft::echo type="expr" value="Math.Sha1(288128685oO5mowH2-fGgObOCVhbCEz_BeWb41492759086wapuboy20170421)" />
+
+<my-soft::echo type="var" value="%0d%0a" />
+sha1:2881286851492759086wapuboy20170421=>
+<my-soft::echo type="expr" value="Math.Sha1(2881286851492759086wapuboy20170421)" />
+
+<my-soft::echo type="var" value="%0d%0a" />
+md5 13342509591492748816wapuboy20170421 =>
+<my-soft::echo type="expr" value="Math.Sha1(13342509591492748816wapuboy20170421)" />
+
+<my-soft::echo type="var" value="%0d%0a" />
+input data is :
+<my-soft::echo type="var" value="%0d%0a" />
+raw data :
+<my-soft::echo type="var" value="%0d%0a" />
+<my-soft::echo type="var" value="$_RAW_REQUEST_STRING"  />
+
+<my-soft::echo type="var" value="%0d%0a" />
+a:
+<my-soft::echo type="var" value="$a"  />
+<my-soft::echo type="var" value="%0d%0a" />
+b:
+-->
+<my-soft::assign id="mysrc" expr="String.Cat($nonce,$timestamp,wapuboy20170421)" />
+<my-soft::assign id="myres" expr="Math.Sha1($mysrc)" />
+
+<my-soft::assign id="mysrc1" expr="String.Cat($nonce,$openid,$timestamp,wapuboy20170421)" />
+<my-soft::assign id="myres1" expr="Math.Sha1($mysrc1)" />
+
+<my-soft::assign id="mysrc2" expr="String.Cat($nonce,$timestamp,$openid,wapuboy20170421)" />
+<my-soft::assign id="myres2" expr="Math.Sha1($mysrc2)" />
+
+
+<my-soft::assign id="mysrc4" expr="String.Cat($timestamp,$nonce,wapuboy20170421)" />
+<my-soft::assign id="myres4" expr="Math.Sha1($mysrc4)" />
+
+<my-soft::echo type="expr" value="String.Cat($nonce,%20,$timestamp,%20,$signature,%20,$myres,%0a%0d)"  />
+<my-soft::echo type="expr" value="String.Cat($nonce,%20,$timestamp,%20,$signature,%20,$myres1,%0a%0d)"  />
+<my-soft::echo type="expr" value="String.Cat($nonce,%20,$timestamp,%20,$signature,%20,$myres2,%0a%0d)"  />
+<my-soft::echo type="expr" value="String.Cat($nonce,%20,$timestamp,%20,$signature,%20,$myres4,%0a%0d)"  />
+
+
+<my-soft::invoke type="httpcall" service="xdb_reg" filepath="../cnf/template/bpml/httpcall/xdb_httpcall.xml" retvar="response" >
+	<my-soft::parameter name="openid" 	type="var" 	value="musername"/>   
+	<my-soft::parameter name="name" 	type="var" 	value="content_clean"/>    
+</my-soft::invoke>
+<my-soft::echo type="var" value="$response"  />
+<my-soft::invoke type="httpcall" service="xdb_modi_nick" filepath="../cnf/template/bpml/httpcall/xdb_httpcall.xml" retvar="response" >
+	<my-soft::parameter name="openid" 	type="var" 	value="musername"/>   
+	<my-soft::parameter name="name" 	type="var" 	value="content_clean"/>    
+</my-soft::invoke>
+<my-soft::echo type="var" value="$response"  />
+<my-soft::invoke type="httpcall" service="xdb_uinfo" filepath="../cnf/template/bpml/httpcall/xdb_httpcall.xml" retvar="response" >
+	<my-soft::parameter name="openid" 	type="var" 	value="musername"/>   
+	<my-soft::parameter name="name" 	type="var" 	value="content_clean"/>    
+</my-soft::invoke>
+
+<my-soft::echo type="var" value="$response"  />
