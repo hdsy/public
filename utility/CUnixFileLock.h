@@ -17,33 +17,36 @@ private:
 	bool m_bLocked;
 
 public:
-	CUnixFileLock(const char * szFilename="./.CUnixFlock")
+	CUnixFileLock(const char * szFilename = "./.CUnixFlock")
 	{
 		m_iID = -1;m_bLocked =false;
+
+		m_iID = open( szFilename, O_CREAT | O_TRUNC);
+
 		GetLock();
-	}
+	};
 
-	int GetLock()
+	bool GetLock()
 	{
-		if (m_iID == -1 )
-			m_iID = open( szFilename, O_CREAT | O_TRUNC);
-
-		if( -1 == flock( m_iID, LOCK_NB | LOCK_EX))
+		if (m_iID != -1 )
 		{
-			m_bLocked = false;
-		}
-		else
-		{
-			m_bLocked = true;
+			if( -1 == flock( m_iID, LOCK_NB | LOCK_EX))
+			{
+				m_bLocked = false;
+			}
+			else
+			{
+				m_bLocked = true;
+			}
 		}
 
 		return m_bLocked;
-	}
+	};
 
 	virtual ~CUnixFileLock()
 	{
 		close( m_iID);
-	}
+	};
 };
 
 #endif
