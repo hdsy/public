@@ -37,6 +37,7 @@ public:
 			else
 			{
 				m_bLocked = true;
+				write(m_iID,getpid(),sizeof(pid_t));
 			}
 		}
 
