@@ -14,19 +14,32 @@
 class CUnixFileLock
 {
 private:
-	int m_iID;
+	int m_iID; // 文件ID
 
-	bool m_bLocked;
+	bool m_bLocked; // 是否锁住
+
+	unsigned int m_iPid; // 锁住的进程号
 
 public:
 	CUnixFileLock(const char * szFilename = "./.CUnixFlock")
 	{
-		m_iID = -1;m_bLocked =false;
+		m_iID = -1;m_bLocked =false;m_iPid=0;
 
 		m_iID = open( szFilename, O_CREAT|O_RDWR /*| O_TRUNC*/);
 
 		GetLock();
 	};
+
+	unsigned int GetWorkingProcessID()
+	{
+		if (m_iPid != 0 ) return m_iPid;
+
+		if (m_iID != -1 )
+		{
+			read(m_iID,&m_iPid,sizeof(m_iPid));
+		}
+		return m_iPid;
+	}
 
 	bool GetLock()
 	{
@@ -42,9 +55,9 @@ public:
 			{
 				m_bLocked = true;
 
-				unsigned int pid =  getpid();
+				m_iPid =  getpid();
 
-				write(m_iID,(const void*)&pid,sizeof(pid));
+				write(m_iID,(const void*)&m_iPid,sizeof(m_iPid));
 
 			}
 		}
