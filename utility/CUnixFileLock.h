@@ -1,7 +1,7 @@
 #ifndef _UPGW_CUnixFlock_H_
 #define _UPGW_CUnixFlock_H_
 
-
+#include <string>
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -21,11 +21,13 @@ private:
 	unsigned int m_iPid; // 锁住的进程号
 
 public:
-	CUnixFileLock(const char * szFilename = "./.CUnixFlock")
+	CUnixFileLock(const std::string & sDir)
 	{
 		m_iID = -1;m_bLocked =false;m_iPid=0;
 
-		m_iID = open( szFilename, O_CREAT|O_RDWR /*| O_TRUNC*/);
+		std::string sFilename = sDir + "./.CUnixFlock";
+
+		m_iID = open( sFilename.c_str(), O_CREAT|O_RDWR /*| O_TRUNC*/);
 
 		GetLock();
 	};
