@@ -6,7 +6,7 @@
 #ifndef CLINUXDLL_H_HEADER_INCLUDED_B2916BA0
 #define CLINUXDLL_H_HEADER_INCLUDED_B2916BA0
 
-#include "uc_global_var.h"
+#include "mysoft_utility.h"
 
 // 管理动态库：uc这里主要是对格式转换动态库的管理
 //##ModelId=4D6EF93903D1
