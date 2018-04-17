@@ -21,7 +21,7 @@ int CLinuxDll::Load(const std::string & inDir, const std::string &inMatch)
 	memset(szCmd,0,sizeof(szCmd));
 	memset(szRes,0,sizeof(szRes));
 	
-	sprintf(szCmd,"ls %s/%s",inDir.c_str(),inMatch.c_str());
+	sprintf(szCmd,"ls -1 %s/%s 2>/dev/null ",inDir.c_str(),inMatch.c_str());
 	
 	
 	dl = popen(szCmd, "r"); 
