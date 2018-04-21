@@ -27,7 +27,7 @@ public:
 
 		std::string sFilename = sDir + "./.CUnixFlock";
 
-		m_iID = open( sFilename.c_str(), O_CREAT|O_RDWR /*| O_TRUNC*/£¬00600);
+		m_iID = open( sFilename.c_str(), O_CREAT|O_RDWR /*| O_TRUNC*/,00600);
 
 		GetLock();
 	};
