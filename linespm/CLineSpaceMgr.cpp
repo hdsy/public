@@ -280,7 +280,7 @@ int CLineSpaceMgr::InitMmap(size_t inObjSize, size_t inMaxObjCount, const char *
 	// 确定 spm 文件路径
 	std::string sSpmFilePath = "";
 
-	sSpmFilePath +=
+	sSpmFilePath = sSpmFilePath +
 			inName + "_" +
 			MyUtility::CBaseEncode::UIntToString(inMaxObjCount) + "_" +
 			MyUtility::CBaseEncode::UIntToString(inObjSize) + "_" +
